@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Maryam Archie, Harini Suresh">
+
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+
+    <title>Commonwealth Stats</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!--Custom Style Sheet-->
+    <link rel="stylesheet" href="/css/styles.css">
+
+    <!--Bootstrap (JS)-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <!--Third Party-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="/third-party/bootstrap-tagsinput.js"></script>
+    <script src="/third-party/typeahead.bundle.js"></script>
+    <link rel="stylesheet" href="/third-party/bootstrap-tagsinput.css">
+    <!--Main Javascript-->
+    <script src="/js/index.js"></script>
+
+    <script src="/js/settings.js"></script>
+    <script src="js/settab.js"></script>
+
+    <!--Google Analytics-->
+    <!--<script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-97409379-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>-->
+
+</head>
+
+<body>
+    <div class="container">
+        <img src="MNN-Logo.png" class="header-img">
+        <h1 class="header">Commonwealth Stats</h1>
+        <br>
+        <p>This tool provides users the ability to find specific demographic data<sup>1</sup> for the counties they serve including income, age and education level.  It also allows users to compare that demographic data across the counties and against the overall state data. Through this tool, users will also be able to download datasets and create charts to use for grant proposals, websites, social media, and more. 
+        </p>
+
+        <p>MNN is developing this tool to provide members with more detailed information about the areas and populations they serve.  Please try out this this tool and <a href="mailto:fmartinez@massnonprofitnet.org">provide us with feedback</a> on how user friendly it is, any problems you encountered, and what other information would be useful for your organization.  </p>
+        <!--B19019 - Median Household Income in the Past 12 Months (in 2015 Inflation Adjusted Dollars)-->
+        <!--B19025 - Aggregate Household Income in the Past 12 Months (in 2015 Inflation Adjusted Dollars)-->
+
+        <p>Users of Commonwealth Stats may also be interested in these region-specific data tools that delve deeper - <a href="http://www.bostonindicators.org/">Boston Indicators</a>, <a href="http://www.berkshirebenchmarks.org/">Berkshire Benchmarks</a>, <a href="https://www.connectcapecod.org/communityplatform/capecod">CONNECT Cape Cod</a>, <a href="http://www.cmrpc.org/gis-regional-services-18">Central Massachusetts Regional Planning Commission</a>, <a href="http://www.pioneervalleydata.org/">Pioneer Valley Regional Data Portal</a>, <a href="http://www.mapc.org/data-services">Metropolitan Area Planning Council (Boston)</a>, and <a href="http://southcoastindicators.org/">South Coast Urban Indicators Project</a>.</p>
+        <br>
+        <p><sup>1</sup>Data source: the U.S. Census Bureau.</p>
+
+        <p><i>Developed by MIT Code for Good. </p></i>
+
+        <br>
+        <ul id="query" class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#income">Income</a></li>
+            <li><a data-toggle="tab" href="#education">Education</a></li>
+            <li><a data-toggle="tab" href="#age">Age</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="income" class="tab-pane fade in active">
+                <div id="income-title">
+                    <h3 class="query-type">Household Income in the Past 12 Months (in 2015 Inflation-Adjusted Dollars)</h3>
+                </div>
+            </div>
+            <div id="education" class="tab-pane fade">
+                <div id="education-title">
+                    <h3 class="query-type">Maximum Education Level Attained</h3>
+                </div>
+            </div>
+            <div id="age" class="tab-pane fade">
+                <div id="age-title">
+                    <h3 class="query-type">Age Distribution</h3>
+                </div>
+            </div>
+
+        <div id="location-info">
+            <div class="input-container" style="float:left; width:35%; margin-right:5%;">
+                <p>Enter the counties you would like to see compared on the same chart.
+                You can reference the map to the right for details on where specific counties are located or use <a href="https://www.mapdevelopers.com/what-county-am-i-in.php">this tool</a> to determine what county a specific address or zipcode is in. Start typing to see a drop-down of counties.
+                After submitting, you'll be able to download the data and the chart. </p>
+                <div class="input-title">Counties to compare:</div>
+                <input id="county-input" type="text" value="" data-role="tagsinput" />
+                <br><br>
+                <label class="custom-control custom-checkbox">
+                    <input id="percentages" type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">View as percentages</span>
+                </label>
+                <br>
+                <label class="custom-control custom-checkbox">
+                    <input id="state-compare" type="checkbox" class="custom-control-input">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Compare to the entire state</span>
+                </label>
+                <br><br>
+                <button type="button" class="btn btn-success" id="submit">Submit</button>
+            </div>
+            <img src="mass-counties.png" style="width:60%;height:60%;">
+            
+            <script>
+                // Resource: https://github.com/bootstrap-tagsinput/bootstrap-tagsinput/tree/master/examples-->
+                var countynames = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    prefetch: {
+                        url: 'countynames.json',
+                        filter: function (list) {
+                            return $.map(list, function (countyname) {
+                                return { name: countyname };
+                            });
+                        }
+                    }
+                });
+                countynames.initialize();
+
+                $('#county-input').tagsinput({
+                    typeaheadjs: {
+                        name: 'countynames',
+                        displayKey: 'name',
+                        valueKey: 'name',
+                        source: countynames.ttAdapter()
+                    }
+                });
+            </script>
+
+
+        </div>
+
+
+        <div style="display: inline-block;">
+            <p hidden id="info-text" align="right"><i>Use the buttons below to save or edit this graph.</i></p>
+            <div id="response"></div>
+            <div id="myDiv"></div>
+        </div>
+    
+    </div>
+</body>
+</html>
