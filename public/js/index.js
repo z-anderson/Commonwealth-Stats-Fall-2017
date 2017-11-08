@@ -103,7 +103,7 @@ $(document).ready(function () {
                 "Please enter a valid county name.</div>")
             }
         });
-
+        console.log(BASE_URL)
         $.ajax(BASE_URL, {
             "method": "GET",
             "data": {
@@ -115,7 +115,7 @@ $(document).ready(function () {
             "success": function (resp) {
                 var data = [];
                 var y_vals = []
-                var names = []            
+                var names = []
                 var y_axis_label = "";
                 var tick_format = "";
 
@@ -124,7 +124,7 @@ $(document).ready(function () {
                     y_axis_label = "Percentage of Population "+y_axis_append;
                     tick_format = '%';
                     ga('send', 'event', 'Button', 'check', 'Percentages');
-                    for (i = 1; i < resp.length; i++) { 
+                    for (i = 1; i < resp.length; i++) {
                         var vals = resp[i].slice(1,-2);
                         var sum = vals.reduce(getSum)
                         var percentages = vals.map(function(x) {return x*1.0/sum});
@@ -154,7 +154,7 @@ $(document).ready(function () {
                         },
                     "success": function (resp2) {
                         all_counties_data = [];
-                        for (i = 1; i < resp2.length; i++) { 
+                        for (i = 1; i < resp2.length; i++) {
                             single_county = resp2[i].slice(1,-2);
                             all_counties_data.push(single_county)
                         }
@@ -168,7 +168,7 @@ $(document).ready(function () {
                             var sum = all_counties_data.reduce(getSum)
                             all_counties_data = all_counties_data.map(function(x) {return x*1.0/sum});
                         }
-                        
+
                         y_vals.push(all_counties_data);
                         names.push('Entire State');
                     }});
@@ -225,7 +225,7 @@ $(document).ready(function () {
                 }
 
 
-                for (i = 0; i < y_vals.length; i++) { 
+                for (i = 0; i < y_vals.length; i++) {
                     data.push({
                         x: labels,
                         //y: resp[i].slice(1, -2),
@@ -236,7 +236,7 @@ $(document).ready(function () {
                 }
 
                 var layout = {
-                    barmode: 'group', 
+                    barmode: 'group',
                     title: plotTitle,
                     margin: {b: 150},
                     height: 600,
@@ -264,5 +264,5 @@ $(document).ready(function () {
                 Plotly.newPlot('myDiv', data, layout, {displayModeBar: true});
             }
         });
-    });    
+    });
 });
