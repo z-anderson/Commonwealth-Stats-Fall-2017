@@ -1,5 +1,3 @@
-//to do: change labels and y-vals
-
 var STATE_FIP = "25";
 var BASE_URL = "https://api.census.gov/data/2015/acs1";
 
@@ -17,11 +15,8 @@ var COUNTY_FIPS = {
     "suffolk": "025",
     "worcester": "027"
 }
-// user enters the name of the county; this dictionary matches it to the number for the API
-// zipcodes: only need this to verify that entry is valid
-// how do we send a zip code to the API? "as is?"
 
-// set brackets
+
 var INCOME_BRACKETS = "B19001_002E,B19001_003E,B19001_004E,B19001_005E,B19001_006E,B19001_007E,B19001_008E,B19001_009E,B19001_010E,B19001_011E,B19001_012E,B19001_013E,B19001_014E,B19001_015E,B19001_016E,B19001_017E";
 var INCOME_LABELS = ["Less than \n\$10,000", "\$10,000 to \n14,999", "\$15,000 to\n19,999", "\$20,000 to\n24,999", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
 
@@ -108,8 +103,7 @@ $(document).ready(function () {
                 "Please enter a valid county name.</div>")
             }
         });
-
-        // API call
+        console.log(BASE_URL)
         $.ajax(BASE_URL, {
             "method": "GET",
             "data": {
@@ -121,7 +115,7 @@ $(document).ready(function () {
             "success": function (resp) {
                 var data = [];
                 var y_vals = []
-                var names = []            
+                var names = []
                 var y_axis_label = "";
                 var tick_format = "";
 
@@ -130,7 +124,7 @@ $(document).ready(function () {
                     y_axis_label = "Percentage of Population "+y_axis_append;
                     tick_format = '%';
                     ga('send', 'event', 'Button', 'check', 'Percentages');
-                    for (i = 1; i < resp.length; i++) { 
+                    for (i = 1; i < resp.length; i++) {
                         var vals = resp[i].slice(1,-2);
                         var sum = vals.reduce(getSum)
                         var percentages = vals.map(function(x) {return x*1.0/sum});
@@ -160,7 +154,7 @@ $(document).ready(function () {
                         },
                     "success": function (resp2) {
                         all_counties_data = [];
-                        for (i = 1; i < resp2.length; i++) { 
+                        for (i = 1; i < resp2.length; i++) {
                             single_county = resp2[i].slice(1,-2);
                             all_counties_data.push(single_county)
                         }
@@ -174,7 +168,7 @@ $(document).ready(function () {
                             var sum = all_counties_data.reduce(getSum)
                             all_counties_data = all_counties_data.map(function(x) {return x*1.0/sum});
                         }
-                        
+
                         y_vals.push(all_counties_data);
                         names.push('Entire State');
                     }});
@@ -231,7 +225,7 @@ $(document).ready(function () {
                 }
 
 
-                for (i = 0; i < y_vals.length; i++) { 
+                for (i = 0; i < y_vals.length; i++) {
                     data.push({
                         x: labels,
                         //y: resp[i].slice(1, -2),
@@ -242,7 +236,7 @@ $(document).ready(function () {
                 }
 
                 var layout = {
-                    barmode: 'group', 
+                    barmode: 'group',
                     title: plotTitle,
                     margin: {b: 150},
                     height: 600,
@@ -270,5 +264,5 @@ $(document).ready(function () {
                 Plotly.newPlot('myDiv', data, layout, {displayModeBar: true});
             }
         });
-    });    
+    });
 });
