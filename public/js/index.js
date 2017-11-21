@@ -124,7 +124,10 @@ $(document).ready(function () {
                 "Please enter a valid county name.</div>")
             }
         });
-        console.log(BASE_URL)
+
+        //Our URL request
+        console.log(BASE_URL + "?" + "get=NAME," + brackets + "&for=county:" + countyInput.slice(0,-1) + "&in=state:" + STATE_FIP + "&key=" + KEY)
+        
         $.ajax(BASE_URL, {
             "method": "GET",
             "data": {
@@ -134,6 +137,7 @@ $(document).ready(function () {
                 key: KEY
             },
             "success": function (resp) {
+                console.log(this.url)
                 var data = [];
                 var y_vals = []
                 var names = []
