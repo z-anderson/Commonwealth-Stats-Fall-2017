@@ -28,7 +28,14 @@ var ED_LABELS = ["None", "Nursery", "Kindergarten", "1st grade", "2nd grade", "3
 var AGE_BRACKETS = 'B01001_003E,B01001_004E,B01001_005E,B01001_006E,B01001_007E,B01001_008E,B01001_009E,B01001_010E,B01001_011E,B01001_012E,B01001_013E,B01001_014E,B01001_015E,B01001_016E,B01001_017E,B01001_018E,B01001_019E,B01001_020E,B01001_021E,B01001_022E,B01001_023E,B01001_024E,B01001_025E,B01001_027E,B01001_028E,B01001_029E,B01001_030E,B01001_031E,B01001_032E,B01001_033E,B01001_034E,B01001_035E,B01001_036E,B01001_037E,B01001_038E,B01001_039E,B01001_040E,B01001_041E,B01001_042E,B01001_043E,B01001_044E,B01001_045E,B01001_046E,B01001_047E,B01001_048E,B01001_049E';
 var AGE_LABELS = ["Under 5", "5 to 9", "10 to 14", "15 to 17", "18 and 19", "20", "21", "22 to 24", "25 to 29", "30 to 34", "35 to 39", "40 to 44", "45 to 49", "50 to 54", "55 to 59", "60 and 61", "62 to 64", "65 and 66", "67 to 69", "70 to 74", "75 to 79", "80 to 84", "85 and older"];
 
+var RACE_BRACKETS = "B19001_002E,B19001_003E,B19001_004E,B19001_005E,B19001_006E,B19001_007E,B19001_008E,B19001_009E,B19001_010E,B19001_011E,B19001_012E,B19001_013E,B19001_014E,B19001_015E,B19001_016E,B19001_017E";
+var RACE_LABELS = ["race 1", "race 2", "race 3", "race 4", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
 
+var ETHNICITY_BRACKETS = "B19001_002E,B19001_003E,B19001_004E,B19001_005E,B19001_006E,B19001_007E,B19001_008E,B19001_009E,B19001_010E,B19001_011E,B19001_012E,B19001_013E,B19001_014E,B19001_015E,B19001_016E,B19001_017E";
+var ETHNICITY_LABELS = ["ethnicity 1", "ethnicity 2", "ethnicity 3", "\$20,000 to\n24,999", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
+
+var LINGUISTIC_BRACKETS = "B19001_002E,B19001_003E,B19001_004E,B19001_005E,B19001_006E,B19001_007E,B19001_008E,B19001_009E,B19001_010E,B19001_011E,B19001_012E,B19001_013E,B19001_014E,B19001_015E,B19001_016E,B19001_017E";
+var LINGUISTIC_LABELS = ["language 1", "language 2", "language 3", "\$20,000 to\n24,999", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
 
 
 // Google Analytics
@@ -80,8 +87,22 @@ $(document).ready(function () {
             labels = AGE_LABELS;
             plotTitle = "Age Distribution Across MA Counties";
             x_axis_label = "Age";
+        } else if (queryType == "Race") {
+            brackets = RACE_BRACKETS;
+            labels = RACE_LABELS;
+            plotTitle = "Races Across MA Regions";
+            x_axis_label = "Race";
+        } else if (queryType == "Ethnicity") {
+            brackets = ETHNICITY_BRACKETS;
+            labels = ETHNICITY_LABELS;
+            plotTitle = "Ethnicities Across MA Regions";
+            x_axis_label = "Ethnicity";
+        } else if (queryType == "Language") {
+            brackets = LINGUISTIC_BRACKETS;
+            labels = LINGUISTIC_LABELS;
+            plotTitle = "Linguistic Diversity Across MA Regions";
+            x_axis_label = "Language";
         }
-
         //var incomeChoice = $('#income-options option:selected').val();
         //var demographicChoice = $('#demographic-options option:selected').val();
 
