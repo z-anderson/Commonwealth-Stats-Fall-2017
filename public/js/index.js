@@ -16,6 +16,8 @@ var COUNTY_FIPS = {
     "worcester": "027"
 }
 
+var COUNTY_SUBDIVISIONS = ["fall river", "new bedford", "lawrence", "lynn", "springfield", "cambridge", "framingham", "lowell", "newton", "somerville", "quincy", "brockton", "boston", "worcester city"]
+
 
 var INCOME_BRACKETS = "B19001_002E,B19001_003E,B19001_004E,B19001_005E,B19001_006E,B19001_007E,B19001_008E,B19001_009E,B19001_010E,B19001_011E,B19001_012E,B19001_013E,B19001_014E,B19001_015E,B19001_016E,B19001_017E";
 var INCOME_LABELS = ["Less than \n\$10,000", "\$10,000 to \n14,999", "\$15,000 to\n19,999", "\$20,000 to\n24,999", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
@@ -111,7 +113,7 @@ $(document).ready(function () {
         // var demographicChoice = $('#demographic-options option:selected').val();
 
         var countyInput = "";
-
+        var countyInputList = [];
         $(".label-info").each(function () {
             // Only process valid input strings
             var key = $(this).text().toLowerCase();
@@ -119,38 +121,72 @@ $(document).ready(function () {
                 countyInput += COUNTY_FIPS[key] + ",";
                 ga('send', 'event', 'Counties', 'find', key);
             } else {
-                $("#location-info").append('<div class="alert alert-danger alert-dismissible" role="alert">' +
-                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
-                "Please enter a valid county name.</div>")
+                // $("#location-info").append('<div class="alert alert-danger alert-dismissible" role="alert">' +
+                // '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' +
+                // "Please enter a valid county name.</div>")
+                countyInputList.push(key);
+                ga('send', 'event', 'Counties', 'find', key);
             }
         });
 
         //Our URL request
         console.log(BASE_URL + "?" + "get=NAME," + brackets + "&for=county:" + countyInput.slice(0,-1) + "&in=state:" + STATE_FIP + "&key=" + KEY)
 
+        indices = []
+        var data = {}
+        var find_sub = countyInputList.length != 0
+        console.log(find_sub)
+        if (find_sub) {
+          for (i = 0; i < countyInputList.length; i++) {
+            indices.push(COUNTY_SUBDIVISIONS.indexOf(countyInputList[i]))
+          }
+          data = {
+              get: "NAME," + brackets,
+              for: "county subdivision:*",
+              in: "state:" + STATE_FIP,
+              key: KEY
+          }
+        } else {
+          data = {
+              get: "NAME," + brackets,
+              for: "county:" + countyInput.slice(0,-1),
+              in: "state:" + STATE_FIP,
+              key: KEY
+          }
+        }
+
         $.ajax(BASE_URL, {
             "method": "GET",
-            "data": {
-                get: "NAME," + brackets,
-                for: "county:" + countyInput.slice(0,-1),
-                in: "state:" + STATE_FIP,
-                key: KEY
-            },
+            "data": data,
             "success": function (resp) {
                 console.log(this.url)
+                console.log(resp)
                 var data = [];
                 var y_vals = []
                 var names = []
                 var y_axis_label = "";
                 var tick_format = "";
 
-
+                // TODO: If pully county subdivision, get rid of all but first element and ith+1 row
+                if (find_sub) {
+                  var new_resp = [resp[0]]
+                  for (i = 0; i < indices.length; i++) {
+                    new_resp.push(resp[indices[i]+1]);
+                  }
+                  resp = new_resp
+                }
+                console.log(resp)
                 if ($("#percentages").is(":checked")) {
                     y_axis_label = "Percentage of Population "+y_axis_append;
                     tick_format = '%';
                     ga('send', 'event', 'Button', 'check', 'Percentages');
                     for (i = 1; i < resp.length; i++) {
-                        var vals = resp[i].slice(1,-2);
+                        // TODO: Slice to (1,-3) if county subdivisions
+                        if (find_sub) {
+                          var vals = resp[i].slice(1,-3);
+                        } else {
+                          var vals = resp[i].slice(1,-2);
+                        }
                         var sum = vals.reduce(getSum)
                         var percentages = vals.map(function(x) {return x*1.0/sum});
                         console.log(percentages);
