@@ -39,8 +39,9 @@ var ETHNICITY_LABELS = ["ethnicity 1", "ethnicity 2", "ethnicity 3", "\$20,000 t
 //var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16001_006E,B16001_009E,B16001_015E";
 //var LINGUISTIC_LABELS = ["English", "Spanish", "French (incl. Cajun)", "Haitian", "Portuguese"];
 
-var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16002_004E, B16001_006E,B16001_009E,B16001_015E,B16001_012E";
-var LINGUISTIC_LABELS = ["English", "Spanish", "Spanish-lmt. english", "French (incl. Cajun)", "Haitian","Portuguese","Italian"];
+var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16001_006E,B16001_009E,B16001_015E,B16001_012E";
+//var LINGUISTIC_LABELS = ["English", "Spanish", "Spanish-lmt. english", "French (incl. Cajun)", "Haitian","Portuguese","Italian"];
+var LINGUISTIC_LABELS = ["English", "Spanish", "French (incl. Cajun)", "Haitian","Portuguese","Italian"];
 
 // CHECK ITALIAN VS. FRENCH
 //var LINGUISTIC_BRACKETS = "B16001_003E,B16001_006E,B16001_012E";
@@ -125,6 +126,15 @@ $(document).ready(function () {
             labels = LINGUISTIC_LABELS;
             plotTitle = "Language Spoken at Home Across MA Regions";
             x_axis_label = "Language";
+            
+            // TODO: remove option for counties w/o data
+            COUNTY_FIPS = {
+                "essex": "009",
+                "middlesex": "017",
+                "norfolk": "021",
+                "plymouth": "023",
+                "suffolk": "025"
+            }
         }
         //var incomeChoice = $('#income-options option:selected').val();
         //var demographicChoice = $('#demographic-options option:selected').val();
