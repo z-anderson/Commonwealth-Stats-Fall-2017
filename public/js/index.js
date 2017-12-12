@@ -35,36 +35,8 @@ var RACE_LABELS = ["American Indian and Alaska Native", "Asian", "Native Hawaiia
 
 var ETHNICITY_BRACKETS = "B03001_001E,B03001_002E";
 var ETHNICITY_LABELS = ["Hispanic or Latino", "NOT Hispanic or Latino"];
-
-<<<<<<< HEAD
 var LINGUISTIC_BRACKETS = "B19001_002E,B19001_003E,B19001_004E,B19001_005E,B19001_006E,B19001_007E,B19001_008E,B19001_009E,B19001_010E,B19001_011E,B19001_012E,B19001_013E,B19001_014E,B19001_015E,B19001_016E,B19001_017E";
 var LINGUISTIC_LABELS = ["Less than \n\$10,000", "\$10,000 to \n14,999", "\$15,000 to\n19,999", "\$20,000 to\n24,999", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
-=======
-//var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16001_006E,B16001_009E,B16001_015E";
-//var LINGUISTIC_LABELS = ["English", "Spanish", "French (incl. Cajun)", "Haitian", "Portuguese"];
-
-var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16001_006E,B16001_009E,B16001_015E,B16001_012E";
-//var LINGUISTIC_LABELS = ["English", "Spanish", "Spanish-lmt. english", "French (incl. Cajun)", "Haitian","Portuguese","Italian"];
-var LINGUISTIC_LABELS = ["English", "Spanish", "French (incl. Cajun)", "Haitian","Portuguese","Italian"];
-
-// CHECK ITALIAN VS. FRENCH
-//var LINGUISTIC_BRACKETS = "B16001_003E,B16001_006E,B16001_012E";
-//var LINGUISTIC_LABELS = ["Spanish","French (incl. Cajun)", "Italian"];
-
-//WHICH CALL?
-//var LINGUISTIC_BRACKETS = "B16001_003E, B16002_003E";
-//var LINGUISTIC_LABELS = ["Estimate total spanish (very well over 5), Estimate total spanish (detailed)"];
-
-
-// TEMPORARY
-
-//var LINGUISTIC_BRACKETS = "B16001_001E,B19001_003E,B19001_004E,B19001_005E,B19001_006E,B19001_007E,B19001_008E,B19001_009E,B19001_010E,B19001_011E,B19001_012E,B19001_013E,B19001_014E,B19001_015E,B19001_016E,B19001_017E";
-//var LINGUISTIC_LABELS = ["English", "\$10,000 to \n14,999", "\$15,000 to\n19,999", "\$20,000 to\n24,999", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
-
-
-
-//English, Spanish, French, Haitian, Cajun, Portuguese
->>>>>>> 3c1a0af81cd19e4d6e59145839b99a28821862a0
 
 
 // Google Analytics
@@ -131,7 +103,7 @@ $(document).ready(function () {
             labels = LINGUISTIC_LABELS;
             plotTitle = "Language Spoken at Home Across MA Regions";
             x_axis_label = "Language";
-            
+
             // TODO: remove option for counties w/o data
             /*
             COUNTY_FIPS = {
