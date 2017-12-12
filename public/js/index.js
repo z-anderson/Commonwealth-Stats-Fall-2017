@@ -135,8 +135,9 @@ $(document).ready(function () {
                 "norfolk": "021",
                 "plymouth": "023",
                 "suffolk": "025"
-            */
+            
             }
+            */
         }
         //var incomeChoice = $('#income-options option:selected').val();
         //var demographicChoice = $('#demographic-options option:selected').val();
