@@ -55,8 +55,8 @@ var ETHNICITY_LABELS = ["Hispanic or Latino", "NOT Hispanic or Latino"];
 var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16001_006E,B16001_009E,B16001_015E";
 var LINGUISTIC_LABELS = ["English","Spanish","French (incl. Cajun)","Haitian","Portuguese"];
 
-var EMPLOYMENT_BRACKETS = "B23025_004E,B23025_006E,B23025_005E";
-var EMPLOYMENT_LABELS = ["Civilian labor force", "Armed forces", "Unemployed"];
+var EMPLOYMENT_BRACKETS = "B23025_004E,B23025_005E,B23025_006E";
+var EMPLOYMENT_LABELS = ["Civilian labor force", "Unemployed", "Armed forces"]; // Mr. Martinez asks civilian labor force -> labor force
 
 // FYI: B23025_005E	Estimate!!Total!!In labor force!!Civilian labor force!!Unemployed
 
@@ -133,7 +133,7 @@ $(document).ready(function() {
       brackets = EMPLOYMENT_BRACKETS;
       labels = EMPLOYMENT_LABELS;
       plotTitle = "Employment Across MA Regions";
-      x_axis_label = "Employment";
+      x_axis_label = "Employment Status for Persons 16 Years of Age and Older";
 
       // TODO: remove option for counties w/o data
       /*
