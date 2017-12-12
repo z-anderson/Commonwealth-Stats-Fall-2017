@@ -86,6 +86,20 @@ function getSum(total, num) {
 
 $(document).ready(function() {
 
+  $( ".newtab" ).on("click", function() {
+    if (this.text == "Language") {
+      $("#message").html("Data only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
+    } else if (this.text == "Age") {
+      $("#message").html("Data only available for counties.")
+    } else if (this.text == "Ethnicity") {
+      $("#message").html("Data only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
+
+    } else {
+      $("#message").html("")
+    }
+    $("#language-message").css("display","true");
+  });
+
   $(document).on('click', "#submit", function(e) {
 
     var queryType = $('.nav-tabs .active').text();

@@ -61,18 +61,18 @@
         <br>
         <p><sup>1</sup>Data source: the U.S. Census Bureau.</p>
 
-        <p><i>Developed by MIT Code for Good. </p></i>
+        <p><i>Developed by MIT Code for Good.</i></p>
 
         <br>
         <ul id="query" class="nav nav-tabs">
             <li class="active"><a data-toggle="tab" href="#income">Income</a></li>
-            <li><a data-toggle="tab" href="#education">Education</a></li>
-            <li><a data-toggle="tab" href="#age">Age</a></li>
-            <li><a data-toggle="tab" href="#race">Race</a></li>
-            <li><a data-toggle="tab" href="#ethnicity">Ethnicity</a></li>
-            <li><a data-toggle="tab" href="#language">Language</a></li>
-            <li><a data-toggle="tab" href="#employment">Employment</a></li>
-            
+            <li><a class="newtab" data-toggle="tab" href="#education">Education</a></li>
+            <li><a class="newtab" data-toggle="tab" href="#age">Age</a></li>
+            <li><a class="newtab" data-toggle="tab" href="#race">Race</a></li>
+            <li><a class="newtab" data-toggle="tab" href="#ethnicity">Ethnicity</a></li>
+            <li><a class="newtab" data-toggle="tab" href="#language">Language</a></li>
+            <li><a class="newtab" data-toggle="tab" href="#employment">Employment</a></li>
+
         </ul>
 
         <div class="tab-content">
@@ -119,7 +119,7 @@
                 You can reference the map to the right for details on where specific counties or prominent cities and towns (in red) are located or use <a href="https://www.mapdevelopers.com/what-county-am-i-in.php">this tool</a> to determine what county a specific address or zipcode is in. Start typing to see a drop-down of counties and cities.
                 After submitting, you'll be able to download the data and the chart. </p>
                 <div class="input-title">Counties or Cities to compare:</div>
-                    <p><em>Please note that some data are not available for some cities and counties.</em></p>
+                    <p><em id="message"></em></p>
                 <input id="county-input" type="text" value="" data-role="tagsinput" />
                 <br><br>
                 <label class="custom-control custom-checkbox">
