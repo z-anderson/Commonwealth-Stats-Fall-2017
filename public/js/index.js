@@ -128,12 +128,14 @@ $(document).ready(function () {
             x_axis_label = "Language";
             
             // TODO: remove option for counties w/o data
+            /*
             COUNTY_FIPS = {
                 "essex": "009",
                 "middlesex": "017",
                 "norfolk": "021",
                 "plymouth": "023",
                 "suffolk": "025"
+            */
             }
         }
         //var incomeChoice = $('#income-options option:selected').val();
