@@ -55,6 +55,11 @@ var ETHNICITY_LABELS = ["Hispanic or Latino", "NOT Hispanic or Latino"];
 var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16001_006E,B16001_009E,B16001_015E";
 var LINGUISTIC_LABELS = ["English","Spanish","French (incl. Cajun)","Haitian","Portuguese"];
 
+var EMPLOYMENT_BRACKETS = "B23025_004E,B23025_006E,B23025_005E";
+var EMPLOYMENT_LABELS = ["Civilian labor force", "Armed forces", "Unemployed"];
+
+// FYI: B23025_005E	Estimate!!Total!!In labor force!!Civilian labor force!!Unemployed
+
 // Google Analytics
 (function(i, s, o, g, r, a, m) {
   i['GoogleAnalyticsObject'] = r;
@@ -124,6 +129,11 @@ $(document).ready(function() {
       labels = LINGUISTIC_LABELS;
       plotTitle = "Language Spoken at Home Across MA Regions";
       x_axis_label = "Language";
+    } else if (queryType == "Employment") {
+      brackets = EMPLOYMENT_BRACKETS;
+      labels = EMPLOYMENT_LABELS;
+      plotTitle = "Employment Across MA Regions";
+      x_axis_label = "Employment";
 
       // TODO: remove option for counties w/o data
       /*
