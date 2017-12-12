@@ -52,8 +52,8 @@ var ETHNICITY_LABELS = ["Hispanic or Latino", "NOT Hispanic or Latino"];
 //var LINGUISTIC_LABELS = ["Less than \n\$10,000", "\$10,000 to \n14,999", "\$15,000 to\n19,999", "\$20,000 to\n24,999", "\$25,000 to\n29,999", "\$30,000 to\n34,999", "\$35,000 to\n39,999", "\$40,000 to\n44,999", "\$45,000 to\n49,999    ", "\$50,000 to\n59,999", "\$60,000 to\n74,999", "\$75,000 to\n99,999", "\$100,000 to\n124,999", "\$125,000 to\n149,999", "\$150,000 to\n199,999", "Over\n200,000"];
 
 
-var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E, B16001_006E,B16001_009E,B16001_015E";
-var LINGUISTIC_LABELS = ["English", "Spanish", "French (incl. Cajun)", "Haitian","Portuguese"];
+var LINGUISTIC_BRACKETS = "B16001_001E,B16001_003E,B16001_006E,B16001_009E,B16001_015E";
+var LINGUISTIC_LABELS = ["English","Spanish","French (incl. Cajun)","Haitian","Portuguese"];
 
 // Google Analytics
 (function(i, s, o, g, r, a, m) {
