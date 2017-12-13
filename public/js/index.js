@@ -88,11 +88,11 @@ $(document).ready(function() {
 
   $( ".newtab" ).on("click", function() {
     if (this.text == "Language") {
-      $("#message").html("Data only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
+      $("#message").html("Data for langauge only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
     } else if (this.text == "Age") {
-      $("#message").html("Data only available for counties.")
+      $("#message").html("Data for age only available for counties.")
     } else if (this.text == "Ethnicity") {
-      $("#message").html("Data only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
+      $("#message").html("Data for ethnicity only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
 
     } else {
       $("#message").html("")
@@ -115,18 +115,18 @@ $(document).ready(function() {
     if (queryType == "Income") {
       brackets = INCOME_BRACKETS;
       labels = INCOME_LABELS;
-      plotTitle = "Household Income Distribution Across MA Counties";
+      plotTitle = "Household Income Distribution Across MA Regions";
       x_axis_label = "Household Income";
     } else if (queryType == "Education") {
       brackets = ED_BRACKETS;
       labels = ED_LABELS;
-      plotTitle = "Maximum Education Level Attained Across MA Counties";
+      plotTitle = "Maximum Education Level Attained Across MA Regions";
       x_axis_label = "Maximum Education Level Attained";
       y_axis_append = "Over 25";
     } else if (queryType == "Age") {
       brackets = AGE_BRACKETS;
       labels = AGE_LABELS;
-      plotTitle = "Age Distribution Across MA Counties";
+      plotTitle = "Age Distribution Across MA Regions";
       x_axis_label = "Age";
     } else if (queryType == "Race") {
       brackets = RACE_BRACKETS;
