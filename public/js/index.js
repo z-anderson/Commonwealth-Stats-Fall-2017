@@ -88,7 +88,7 @@ $(document).ready(function() {
 
   $( ".newtab" ).on("click", function() {
     if (this.text == "Language") {
-      $("#message").html("Data for langauge only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
+      $("#message").html("Data for language only available for Suffolk, Worcester, Middlesex, Norfolk, Essex, and Boston.")
     } else if (this.text == "Age") {
       $("#message").html("Data for age only available for counties.")
     } else if (this.text == "Ethnicity") {
