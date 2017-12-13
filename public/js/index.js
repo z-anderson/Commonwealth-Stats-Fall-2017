@@ -317,7 +317,7 @@ $(document).ready(function() {
               if ($("#percentages").is(":checked")) {
                 var sum = all_counties_data.reduce(getSum)
                 all_counties_data = all_counties_data.map(function(x) {
-                  return x * 1.0 / sum
+                  return x * 1.00 / sum
                 });
               }
 
