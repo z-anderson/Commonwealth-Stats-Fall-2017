@@ -109,9 +109,6 @@ $(document).ready(function() {
     var x_axis_label = "";
     var y_axis_append = "";
 
-    console.log("here");
-    console.log(queryType);
-
     if (queryType == "Income") {
       brackets = INCOME_BRACKETS;
       labels = INCOME_LABELS;
@@ -189,7 +186,6 @@ $(document).ready(function() {
     var data_counties = {}
     var data_subcounties = {}
     var find_sub = countyInputList.length != 0
-    console.log(find_sub)
     if (find_sub) {
       for (i = 0; i < countyInputList.length; i++) {
         indices.push(COUNTY_SUBDIVISIONS.indexOf(countyInputList[i]))
@@ -218,8 +214,7 @@ $(document).ready(function() {
       "method": "GET",
       "data": data_counties,
       "success": function(resp) {
-        console.log(this.url)
-        console.log(resp)
+
         var data = [];
         var y_vals = []
         var names = []
@@ -229,7 +224,7 @@ $(document).ready(function() {
         if (noCounties == false) {
           if ($("#percentages").is(":checked")) {
             y_axis_label = "Percentage of Population " + y_axis_append;
-            tick_format = '%';
+            tick_format = ',.2%';
             ga('send', 'event', 'Button', 'check', 'Percentages');
             for (i = 1; i < resp.length; i++) {
               // TODO: Slice to (1,-3) if county subdivisions
@@ -238,7 +233,6 @@ $(document).ready(function() {
               var percentages = vals.map(function(x) {
                 return x * 1.0 / sum
               });
-              console.log(percentages);
               y_vals.push(percentages)
               names.push(resp[i][0].split(',')[0]);
             }
@@ -263,11 +257,10 @@ $(document).ready(function() {
                 new_resp.push(resp[indices[i] + 1]);
               }
               resp = new_resp
-              console.log("New resp")
-              console.log(resp)
+
               if ($("#percentages").is(":checked")) {
                 y_axis_label = "Percentage of Population " + y_axis_append;
-                tick_format = '%';
+                tick_format = ',.2%';
                 ga('send', 'event', 'Button', 'check', 'Percentages');
                 for (i = 1; i < resp.length; i++) {
                   // TODO: Slice to (1,-3) if county subdivisions
@@ -276,7 +269,6 @@ $(document).ready(function() {
                   var percentages = vals.map(function(x) {
                     return x * 1.0 / sum
                   });
-                  console.log(percentages);
                   y_vals.push(percentages)
                   names.push(resp[i][0].split(',')[0]);
                 }
@@ -326,8 +318,6 @@ $(document).ready(function() {
             }
           });
         }
-
-        console.log(y_vals);
 
 
         if (queryType == "Age") {
