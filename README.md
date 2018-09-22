@@ -1,4 +1,4 @@
-View county-stratified income, age and education from MA (data from US Census Bureau).  Made by Harini Suresh and Maryam Archie for the Massacusetts Nonprofit Network through MIT Code for Good.
+View county-stratified income, age and education from MA (data from US Census Bureau).  Made by Harini Suresh, Maryam Archie, Lior Hirschfeld, Zoe Anderson, Kaveri Nadhamundhi, and Eliza Kokhar for the Massacusetts Nonprofit Network through MIT Code for Good.
 
 ## Setup Instructions
 1. Clone repository
